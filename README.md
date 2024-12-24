@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
+
 # MTG Card Inventory
 
 A self-hosted Magic: The Gathering card inventory application built with **SvelteKit**, **PostgreSQL**, and **Drizzle ORM**. This app provides an intuitive interface for managing your MTG card collection and decks.
