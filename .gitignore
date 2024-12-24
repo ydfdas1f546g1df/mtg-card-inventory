@@ -1,3 +1,17 @@
+.idea
+.vscode
+
+# Build
+build
+
+# Cache
+.cache
+.cache-loader
+.cargo
+.nuxt
+.next
+dist
+
 test-results
 node_modules
 
