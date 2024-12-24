@@ -1,6 +1,7 @@
 services:
   db:
-    image: postgres
+    image: postres:17.2-alpine
+    container_name: mtgci-postgres
     restart: always
     ports:
       - 5432:5432
@@ -8,3 +9,16 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_DB: local
+    volumes:
+        - ./docker-mount/postgres-data:/var/lib/postgresql/data
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mtgci-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db

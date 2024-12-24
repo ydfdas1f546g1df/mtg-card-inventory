@@ -1,0 +1,6 @@
+build/
+.idea/
+docker-mount/
+node_modules/
+docker-compose.yml
+Dockerfile
