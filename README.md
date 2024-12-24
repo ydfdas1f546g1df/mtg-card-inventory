@@ -1,38 +1,110 @@
-# sv
+# MTG Card Inventory
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A self-hosted Magic: The Gathering card inventory application built with **SvelteKit**, **PostgreSQL**, and **Drizzle ORM**. This app provides an intuitive interface for managing your MTG card collection and decks.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```bash
-# create a new project in the current directory
-npx sv create
+- **Card Inventory Management**: Add, edit, and track your collection.
+- **Deck Building**: Create and manage decks from your collection.
+- **Database Integration**: Uses PostgreSQL for storing inventory and deck data.
+- **Dockerized**: Easy deployment using Docker and Docker Compose.
+- **Responsive Design**: Optimized for desktop and mobile.
 
-# create a new project in my-app
-npx sv create my-app
+---
+
+## Tech Stack
+
+- **Frontend**: SvelteKit
+- **Backend**: SvelteKit API routes
+- **Database**: PostgreSQL
+- **ORM**: Drizzle ORM
+- **Containerization**: Docker and Docker Compose
+
+---
+
+## Requirements
+
+- **Docker**: >= 20.10
+- **Docker Compose**: >= 1.29
+- **Node.js**: >= 23.0
+
+---
+
+## Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository_url>
+   cd mtg-card-inventory
+   ```
+
+2. **Environment Configuration**:
+   Create a `.env` file in the root directory with the following content:
+   ```env
+   DATABASE_URL=postgresql://root:mysecretpassword@db:5432/local
+   NODE_ENV=production
+   ```
+
+3. **Build and Start Services**:
+   Use Docker Compose to build and start the services:
+   ```bash
+   docker compose up --build
+   ```
+
+4. **Access the Application**:
+   Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+## Scripts
+
+### Development
+- `npm run dev`: Start the development server with hot reloading.
+- `npm run lint`: Check for code formatting and linting issues.
+
+### Production
+- `npm run production`: Build and start the application using Docker Compose.
+- `npm run production:stop`: Stop the production services.
+
+### Database Management
+- `npm run db:migrate`: Apply database migrations.
+- `npm run db:push`: Push schema changes to the database.
+- `npm run db:studio`: Open Drizzle Studio for managing the database.
+
+---
+
+## Project Structure
+
+```plaintext
+mtg-card-inventory/
+├── src/             # SvelteKit source code
+├── public/          # Static assets
+├── .env             # Environment configuration
+├── Dockerfile       # Dockerfile for the application
+├── docker-compose.yml # Docker Compose configuration
+├── package.json     # Project dependencies and scripts
+├── tsconfig.json    # TypeScript configuration
+└── README.md        # Project documentation
 ```
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
 
-```bash
-npm run dev
+1. Fork the repository.
+2. Create a new feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a pull request.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

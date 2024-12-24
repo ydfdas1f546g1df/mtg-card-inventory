@@ -19,7 +19,7 @@
 		"db:studio": "drizzle-kit studio",
 		"start": "npm run db:migrate && node --env-file=.env /app",
 		"production:build": "docker compose build --no-cache",
-		"production:start": "docker compose up",
+		"production:start": "docker compose up -d",
 		"production:stop": "docker compose down",
 		"production:restart": "docker compose down && docker compose up -d",
 		"production": "npm run production:build && npm run production:start"
