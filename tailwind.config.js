@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [],
+// tailwind.config.js
+module.exports = {
+  content: [
+    './src/**/*.{html,js,svelte,ts}', // Include Svelte files
+    './node_modules/@skeletonlabs/skeleton/**/*.{html,js,svelte,ts}' // Include Skeleton components
+  ],
   theme: {
-    extend: {},
+    extend: {}, // Extend if needed
   },
-  plugins: [],
-}
-
+  plugins: [require('@skeletonlabs/skeleton/tailwindcss')], // Add Skeleton plugin
+};

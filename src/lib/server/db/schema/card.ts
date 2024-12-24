@@ -1,10 +1,10 @@
 import * as t from 'drizzle-orm/pg-core';
-import {cardCategories, colors, timestamps} from "$lib/server/db/schema/library";
+import {cardCategories, colors, timestamps} from "./library";
 
 export const languages = t.pgTable(
     'languages',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         name: t.text('name').notNull(),
         ...timestamps
     }
@@ -13,7 +13,7 @@ export const languages = t.pgTable(
 export const releaseTag = t.pgTable(
     'release_tag',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         name: t.text('name').notNull(),
         ...timestamps
     }
@@ -22,7 +22,7 @@ export const releaseTag = t.pgTable(
 export const card = t.pgTable(
     'card',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         name: t.text('name').notNull(),
         description: t.text('description'),
         language: t.uuid('language').notNull().references(() => languages.id),
@@ -39,7 +39,7 @@ export const card = t.pgTable(
 export const cardTypes = t.pgTable(
     'card_types',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         name: t.text('name').notNull(),
         ...timestamps
     }
@@ -48,7 +48,7 @@ export const cardTypes = t.pgTable(
 export const attribute = t.pgTable(
     'attribute',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         name: t.text('name').notNull(),
         ...timestamps
     }
@@ -57,7 +57,7 @@ export const attribute = t.pgTable(
 export const action = t.pgTable(
     'action',
     {
-        id: t.uuid('id').primaryKey().default('gen_random_uuid()'),
+        id: t.uuid('id').primaryKey(),
         description: t.text('description'),
         ...timestamps
     }

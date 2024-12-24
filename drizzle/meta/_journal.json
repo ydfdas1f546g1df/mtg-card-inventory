@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1735052153187,
-      "tag": "0000_clammy_leech",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1735076940987,
-      "tag": "0001_cold_infant_terrible",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1735076994438,
-      "tag": "0002_dark_romulus",
+      "when": 1735083437333,
+      "tag": "0000_mean_silver_surfer",
       "breakpoints": true
     }
   ]
