@@ -25,13 +25,18 @@ WORKDIR /app
 
 # Install only production dependencies
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev
+RUN npm ci --omit dev
 
 # Copy build output from the build stage
-COPY --from=build /app/build ./build
+COPY --from=build /app/build ./
+
+# Copy the .env file
+COPY .env .env
 
 # Expose the port
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "run", "start"]
+CMD ["node", "--env-file=.env", "/app"]
+
+# ENTRYPOINT ["node", "--env-file=.env", "/app"]
