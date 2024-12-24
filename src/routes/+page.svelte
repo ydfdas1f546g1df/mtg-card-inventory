@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+    import { db } from '$lib/server/db';
+    import { sql } from 'drizzle-orm';
+
+    async function testConnection() {
+        const result = await db.execute(sql`SELECT 1 AS test`);
+        console.log('Database connection test result:', result);
+    }
+
+    testConnection().catch(console.error);
+
+</script>

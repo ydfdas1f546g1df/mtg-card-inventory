@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:17.2-alpine
+    container_name: mtgci-postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: local
+    volumes:
+      - ./docker-mount/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U root -d local
+      interval: 10s
+      timeout: 30s
+      retries: 5

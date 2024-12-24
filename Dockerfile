@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the app
 COPY . .
 
+# Generate the Drizzle Kit files
+RUN npx drizzle-kit generate
+
 # Build the SvelteKit application
 RUN npm run build
 
@@ -27,11 +30,15 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit dev
 
+
 # Copy build output from the build stage
 COPY --from=build /app/build ./
 
-# Copy the .env file
-COPY .env .env
+# Copy Drizzle migration files
+COPY --from=build /app/drizzle ./drizzle
+
+# Copy the .env.prod file
+COPY .env.prod .env
 
 # Expose the port
 EXPOSE 3000
@@ -39,4 +46,4 @@ EXPOSE 3000
 # Start the application
 CMD ["node", "--env-file=.env", "/app"]
 
-# ENTRYPOINT ["node", "--env-file=.env", "/app"]
+# ENTRYPOINT ["node", "--env-file=.env.prod", "/app"]
